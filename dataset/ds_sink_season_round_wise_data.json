@@ -1,0 +1,38 @@
+{
+	"name": "ds_sink_season_round_wise_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_gen2",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"year_name": {
+				"type": "string"
+			},
+			"round": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat(dataset().year_name,'_',dataset().round,'.json')",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@concat('Results','/',string(utcnow('yyyyMMdd')))",
+					"type": "Expression"
+				},
+				"fileSystem": "bronze"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "",
+			"firstRowAsHeader": false,
+			"quoteChar": ""
+		},
+		"schema": []
+	}
+}

@@ -1,0 +1,30 @@
+{
+	"name": "ds_sink_season_data_only",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_adls_gen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "season.json",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@concat('Seasons','/',string(utcnow('yyyyMMdd')))",
+					"type": "Expression"
+				},
+				"fileSystem": "bronze"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "",
+			"firstRowAsHeader": false,
+			"quoteChar": ""
+		},
+		"schema": []
+	}
+}
