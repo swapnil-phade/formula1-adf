@@ -152,38 +152,16 @@
 											},
 											"sink": {
 												"type": "String",
-												"physicalType": "String",
 												"ordinal": 1
 											}
 										}
-									],
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
+									]
 								}
 							},
 							"inputs": [
 								{
 									"referenceName": "DS_SOURCE_TEMP_TXT_DATA2",
 									"type": "DatasetReference"
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "DS_SINK_RACES_RESULTS_DATA1",
-									"type": "DatasetReference",
-									"parameters": {
-										"season": {
-											"value": "@pipeline().parameters.year_from_races_pl",
-											"type": "Expression"
-										},
-										"Round": {
-											"value": "@item().round",
-											"type": "Expression"
-										}
-									}
 								}
 							]
 						}
